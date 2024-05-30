@@ -102,7 +102,7 @@ public class Transpile extends AbstractMojo {
         }
         hxml.fixTarget(haxeTarget, intermediateHaxeOutputDir());
 
-        if (haxeTarget.equals("cpp")) {
+        if ("cpp".equals(haxeTarget)) {
             hxml.addHaxelib("hxcpp");
         }
 

@@ -101,7 +101,7 @@ public class HxmlParser {
     public List<String> getHaxelibs() {
         List<String> libs = new ArrayList<String>();
         for (HxmlParser.HxmlParam param : params) {
-            if (param.name.equals("lib")) {
+            if ("lib".equals(param.name)) {
                 libs.add(param.value);
             }
         }
@@ -183,7 +183,7 @@ public class HxmlParser {
     public String getMainClassName() {
         String mainClass = null;
         for (HxmlParser.HxmlParam param : params) {
-            if (param.name.equals("main")) {
+            if ("main".equals(param.name)) {
                 mainClass = param.value;
                 String[] parts = mainClass.split(Pattern.quote("."));
                 mainClass = parts[parts.length - 1];
@@ -202,7 +202,7 @@ public class HxmlParser {
             return;
         }
         for (HxmlParser.HxmlParam param : params) {
-            if (param.name.equals("main")) {
+            if ("main".equals(param.name)) {
                 param.value = value;
                 break;
             }
