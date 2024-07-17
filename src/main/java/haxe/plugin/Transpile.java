@@ -1,6 +1,7 @@
 package haxe.plugin;
 
 import haxe.plugin.util.HxmlParser;
+import io.github.pixee.security.ZipSecurity;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.LogOutputStream;
@@ -339,7 +340,7 @@ public class Transpile extends AbstractMojo {
             }
 
             //get the zip file content
-            ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFile));
+            ZipInputStream zis = ZipSecurity.createHardenedInputStream(new FileInputStream(zipFile));
             //get the zipped file list entry
             ZipEntry ze = zis.getNextEntry();
 
