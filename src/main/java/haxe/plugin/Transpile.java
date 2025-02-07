@@ -1,6 +1,8 @@
 package haxe.plugin;
 
 import haxe.plugin.util.HxmlParser;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.LogOutputStream;
@@ -259,7 +261,7 @@ public class Transpile extends AbstractMojo {
         // download
         if (!file.exists()) {
             getLog().info("Downloading " + file + " from " + getNodeDownloadURL());
-            FileUtils.copyURLToFile(new URL(getNodeDownloadURL()), file);
+            FileUtils.copyURLToFile(Urls.create(getNodeDownloadURL(), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS), file);
         } else {
             getLog().info("Archive found: " + file + " (skipping download)");
         }
